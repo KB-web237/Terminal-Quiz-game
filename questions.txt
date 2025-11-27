@@ -5,7 +5,7 @@ What is the primary language spoken in France? |A) English  |B) Spanish  |C) Fre
 What is the name of the planet we live on? |A) Earth  |B) Mars  |C) Venus  |D) Jupiter |A
 What do people usually drink in the morning to wake up? |A) Water  |B) Coffee  |C) Juice  |D) Milk |B
 Which animal is known as “man’s best friend”? |A) Cat  |B) Rabbit  |C) Horse  |D) Dog |D
-How many continents are there on Earth? |A) 5  |B) 6  |C) 7  |D) 8 | C
+How many continents are there on Earth? |A) 5  |B) 6  |C) 7  |D) 8 |C
 What do you call frozen water? |A) Snow  |B) Rain  |C) Steam  |D) Ice |D
 What is the opposite of hot? |A) Cold  |B) Warm  |C) Boiling  |D) Fire |A
 How many hours are there in a day? |A) 12  |B) 24  |C) 36  |D) 48 |B
