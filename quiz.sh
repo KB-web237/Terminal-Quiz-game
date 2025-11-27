@@ -7,20 +7,21 @@ if [ $# -eq 1 ]; then
     elif [[ "$1" == "practice" ]]; then
         echo "Entering practice mode..."
         sleep 1; clear
-        shuffled_numbers=($(seq 1 20 | shuf))
+         mapfile -t shuffled_numbers < <(seq 1 20 | shuf)
         for ((i=0; i<20; i++)) do
         rn=${shuffled_numbers[i]}
          echo " Question $((i+1)) of 20"
         awk -F '|' -v line="$rn" 'NR==line {print $1, $2, $3, $4, $5}' questions.txt
-        read -p "Enter the correct answer (A/B/C/D): " answer
+        read -r -p "Enter the correct answer (A/B/C/D): " answer
         answer="${answer^^}"
             while true; do
             if [[ "$answer" != "A" && "$answer" != "a" && "$answer" != "B" && "$answer" != "b" && "$answer" != "C" && "$answer" != "c" && "$answer" != "D" && "$answer" != "d" ]]; then
+                clear
                 echo "Invalid input. Please enter A, B, C, or D."
                 echo ""
                 echo " Question $((i+1)) of 20"
                 awk -F '|' -v line="$rn" 'NR==line {print $1, $2, $3, $4, $5}' questions.txt
-                read -p "Enter the correct answer (A/B/C/D): " answer
+                read -r -p "Enter the correct answer (A/B/C/D): " answer
                 answer="${answer^^}"
             else
                 break
@@ -38,27 +39,29 @@ if [ $# -eq 1 ]; then
     fi   
 else
 echo "----------Welcome to the Quiz Game!----------"
-read -p "Enter your name: " name
+read -r -p "Enter your name: " name
 echo "Hello, $name! Let's start the game."
 echo ""
-shuffled_numbers=($(seq 1 20 | shuf))
+mapfile -t shuffled_numbers < <(seq 1 20 | shuf)
 x=0
 long_streak=0
 correct_answers=0
 for ((i=0; i<20; i++)) do
 rn=${shuffled_numbers[i]}
+ clear
  echo " Question $((i+1)) of 20"
 awk -F '|' -v line="$rn" 'NR==line {print $1, $2, $3, $4, $5}' questions.txt
-    read -p "Enter your answer (A/B/C/D): " answer
+    read -r -p "Enter your answer (A/B/C/D): " answer
     answer="${answer^^}"
  while true; do
  if [[ "$answer" != "A"  && "$answer" != "B"  && "$answer" != "C" && "$answer" != "D" ]]; then
-    y=$x
     x=0
+    clear
     echo "Invalid input. Please enter A, B, C, or D."
+    echo ""
     echo " Question $((i+1)) of 20"
     awk -F '|' -v line="$rn" 'NR==line {print $1, $2, $3, $4, $5}' questions.txt
-    read -p "Enter your answer (A/B/C/D): " answer
+    read -r -p "Enter your answer (A/B/C/D): " answer
     answer="${answer^^}"
  else
     break
@@ -83,9 +86,9 @@ done
 echo "----------Game Statistics----------"
 echo "Correct: $correct_answers, Incorect: $((20 - correct_answers)) ,Longeset streak: $long_streak, Final score: $((correct_answers * 100 / 20))%"
 score=$((correct_answers * 100 / 20))
-echo " $name | $score | $correct_answers/20 | $(date +"%Y-%m-%d")" >> highscores.txt
+echo "$name | $score | $correct_answers/20 | $(date +"%Y-%m-%d")" >> highscores.txt
 echo "------------Quiz Over!------------"
-read -p "Press Enter to view the high scores..."
+read -r -p "Press Enter to view the high scores..."
 echo "------------Highest Scores------------"
 sort -t '|' -k2 -nr highscores.txt | head -1
 fi
