@@ -19,7 +19,7 @@ A simple **terminal bash quiz game** that allows users to practice multiple-choi
 - Linux or macOS terminal with **Bash** installed.
 - `questions.txt` file containing questions in the following format:
 
-```
+```text
 Question?| A) Option1 | B) Option2 | C) Option3 | D) Option4 | CorrectAnswerLetter
 ```
 ![Terminal Output](images/questions.png)
